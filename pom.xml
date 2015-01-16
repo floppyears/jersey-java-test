@@ -6,4 +6,11 @@
   <packaging>war</packaging>
   <name>Jersey Java Test</name>
   <description>Test implementation of RESTful API with Jersey and Java</description>
+  <dependencies>
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-jdk-http</artifactId>
+      <version>2.15</version>
+    </dependency>
+  </dependencies>
 </project>
