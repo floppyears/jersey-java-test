@@ -48,6 +48,7 @@ public class Employee {
 	 * @param	obj	object to compare
 	 * @return		true if object has same type and id, otherwise false
 	 */
+	@Override
 	public boolean equals(Object obj) {
 		return ((obj instanceof Employee)
 				&&
@@ -59,6 +60,7 @@ public class Employee {
 	 *
 	 * @return		employee id
 	 */
+	@Override
 	public int hashCode() {
 		return id;
 	}
