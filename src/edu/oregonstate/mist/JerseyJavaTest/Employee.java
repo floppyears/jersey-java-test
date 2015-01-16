@@ -2,14 +2,14 @@ package edu.oregonstate.mist.JerseyJavaTest;
 
 public class Employee {
 
-	Integer id;
-	String osuId;
-	String lastName;
-	String firstName;
-	String middleInitial;
-	String onidLoginId;
-	String emailAddress;
-	String employeeStatus;
+	private Integer id;
+	private String osuId;
+	private String lastName;
+	private String firstName;
+	private String middleInitial;
+	private String onidLoginId;
+	private String emailAddress;
+	private String employeeStatus;
 
 	/**
 	 * Employee Constructor
