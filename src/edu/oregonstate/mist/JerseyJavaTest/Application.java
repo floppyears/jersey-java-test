@@ -21,8 +21,9 @@ import com.sun.net.httpserver.HttpServer;
 public class Application {
 
 	public static Database database = new Database();
-	static String host = "localhost";
-	static Integer port = 8888;
+	private static HttpServer server;
+	private static String host = "localhost";
+	private static Integer port = 8888;
 
 	/**
 	 * Run Jersey HTTP server
@@ -30,9 +31,9 @@ public class Application {
 	 * @param	args	argument list
 	 */
 	public static void main(String[] args) {
-		HttpServer server = configureHttpServer();
-		startHttpServer(server);
-		stopHttpServer(server);
+		configureHttpServer();
+		startHttpServer();
+		stopHttpServer();
 	}
 
 	/**
@@ -40,14 +41,14 @@ public class Application {
 	 *
 	 * @return		newly configured HttpServer instance
 	 */
-	private static HttpServer configureHttpServer() {
+	private static void configureHttpServer() {
 		URI baseUri = UriBuilder.fromUri("http://" + host + "/").port(port).build();
 
 		ResourceConfig config = new ResourceConfig()
 			.register(edu.oregonstate.mist.JerseyJavaTest.Api.v1.EmployeeResource.class)
 			.property(JsonGenerator.PRETTY_PRINTING, true);
 
-		return JdkHttpServerFactory.createHttpServer(baseUri, config, false);
+		server = JdkHttpServerFactory.createHttpServer(baseUri, config, false);
 	}
 
 	/**
@@ -55,7 +56,7 @@ public class Application {
 	 *
 	 * @param	server	unbound HttpServer instance
 	 */
-	private static void startHttpServer(HttpServer server) {
+	private static void startHttpServer() {
 		server.start();
 
 		System.out.println("Server started on " + server.getAddress().toString());
@@ -66,7 +67,7 @@ public class Application {
 	 *
 	 * @param	server	bound HttpServer instance
 	 */
-	private static void stopHttpServer(HttpServer server) {
+	private static void stopHttpServer() {
 		System.out.print("Enter any key to quit: ");
 
 		try {
