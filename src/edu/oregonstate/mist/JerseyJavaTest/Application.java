@@ -29,8 +29,9 @@ public class Application {
 	 * Run Jersey HTTP server
 	 *
 	 * @param	args	argument list
+	 * @throws IOException
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		configureHttpServer();
 		startHttpServer();
 		stopHttpServer();
@@ -66,16 +67,11 @@ public class Application {
 	 * Stop HTTP server on user input
 	 *
 	 * @param	server	bound HttpServer instance
+	 * @throws IOException
 	 */
-	private static void stopHttpServer() {
+	private static void stopHttpServer() throws IOException {
 		System.out.print("Enter any key to quit: ");
-
-		try {
-			System.in.read();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.in.read();
 
 		server.stop(0);
 
