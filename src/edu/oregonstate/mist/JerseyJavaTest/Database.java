@@ -4,15 +4,13 @@ import java.util.HashMap;
 
 public class Database {
 
-	HashMap<Integer,Employee> db;
+	private HashMap<Integer,Employee> db;
 
 	/**
 	 * Initialize the database with sample data
 	 */
 	public Database() {
-		db = new HashMap<Integer,Employee>();
-
-		initialize(db);
+		db = initialize(new HashMap<Integer,Employee>());
 	}
 
 	/**
@@ -32,8 +30,6 @@ public class Database {
 	 */
 	public void setEmployee(Employee employee) {
 		db.put(employee.getId(), employee);
-
-		return;
 	}
 
 	/**
@@ -41,7 +37,7 @@ public class Database {
 	 *
 	 * @param	db	HashMap<Integer,Employee> variable or instance
 	 */
-	private void initialize(HashMap<Integer,Employee> db) {
+	private HashMap<Integer,Employee> initialize(HashMap<Integer,Employee> db) {
 		Integer i;
 		Employee e;
 
@@ -78,6 +74,6 @@ public class Database {
 		e.setEmployeeStatus("A");
 		db.put(i, e);
 
-		return;
+		return db;
 	}
 }
